@@ -89,6 +89,11 @@ class EufySecurityCam(Camera):
         """Return a unique ID."""
         return self._camera.serial
 
+    # rtsp source
+    async def stream_source(self):
+        """Return the stream source."""
+        return await self._camera.async_start_stream()
+
     async def async_camera_image(self):
         """Return a still image response from the camera."""
         if self._last_image_url != self._camera.last_camera_image_url:
